@@ -26,6 +26,5 @@ CREATE TABLE empresas (
     cep VARCHAR(10)
 );
 
-INSERT INTO usuario (email,senha)
-VALUES
-('kauan@gmail.com','123');
+SELECT * FROM usuario;
+SELECT * FROM empresas;

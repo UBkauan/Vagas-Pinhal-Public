@@ -38,6 +38,7 @@
                 <input type="password" id="senha" name="senha">
 
                 <p>Já tem uma conta? <a href="Login.php"> Conectar-se</a></p>
+                <p>É uma empresa? <a href="Cadastro_empresa.php">Cadastre-se Grátis aqui!</a></p>
                 <div>
                     <input type="submit" value="Criar Conta">
                 </div>

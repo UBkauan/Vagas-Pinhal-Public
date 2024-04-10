@@ -121,10 +121,11 @@
 
         <section>
             <header class="header-box">
-                <p class="tips__subtitle">Fique por dentro</p>
                 <div class="tips__title-content">
                     <h2>Dicas para crescer profissionalmente</h2>
                 </div>
+                <p class="tips__subtitle">Fique por dentro</p>
+
 
                 <ul class="tips__list">
 

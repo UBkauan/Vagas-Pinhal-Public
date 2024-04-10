@@ -45,7 +45,7 @@ include('conexao.php');
                 <div class="input-box">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha">
-                </div>  
+                </div>
                 <div class="btn-box">
                     <input type="submit" value="Entrar" id="btn-logar">
                 </div>
