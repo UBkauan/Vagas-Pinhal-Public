@@ -86,7 +86,7 @@ include('conexao.php');
                         if (password_verify($senha, $senha_hash)) {
                             $_SESSION['empresa_id'] = $row['id'];
                             $_SESSION['email_empresa'] = $row['email'];
-                            header("Location: dashboard_empresa.php");
+                            header("Location: empresa-area.php");
                             exit();
                         } else {
                             echo "Senha incorreta.";

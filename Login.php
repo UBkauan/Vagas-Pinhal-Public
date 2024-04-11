@@ -57,7 +57,7 @@ include('conexao.php');
                     $password = $_POST['senha'];
 
                     $sql = "SELECT * FROM usuario WHERE email='$email'";
-                    $res = $conexao->query($sql);
+                    $res = $conexao->query($sql);   
 
                     if ($res && $res->num_rows > 0) {
                         $usuario = $res->fetch_assoc();
