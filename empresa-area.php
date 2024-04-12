@@ -3,20 +3,24 @@ include_once("conexao.php");
 
 session_start(); // Iniciar sessão
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Processar o formulário de publicação de vagas
-    $titulo = $_POST['titulo'];
-    $descricao = $_POST['descricao'];
 
-    // Inserir os dados no banco de dados
-    $sql = "INSERT INTO vagas (empresa_id, titulo, descricao) VALUES (?, ?, ?)";
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("iss", $_SESSION['empresa_id'], $titulo, $descricao);
-    $stmt->execute();
+if (isset($_POST['btn_enviar']))
+{
+    $tituloVaga = $_POST['titulo'];
+    $descricaoVaga = $_POST['descricao'];
+    $data_cadastro = date('d/m/y H:i:s');
 
-    // Redirecionar para a página de sucesso
-    header("Location: empresa-area.php");
-    exit();
+    $sql = "INSERT INTO vagas (titulo,descricao,data_cadastro) VALUES ('$tituloVaga','$descricaoVaga','$data_cadastro');";
+    $sql1 = "SELECT * FROM vagas WHERE titulo = '$tituloVaga' AND descricao = '$descricaoVaga';";
+    $verifica = mysqli_query($conexao, $sql1);
+
+    echo $data_cadastro;
+    if (mysqli_num_rows($verifica) == 0)
+    {
+        if (mysqli_query($conexao,$sql)){
+            echo 'Vaga enviada com sucesso';
+        }
+    }
 }
 ?>
 
@@ -39,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="POST" action="">
         <input type="text" name="titulo" placeholder="Título da vaga" required><br>
         <textarea name="descricao" placeholder="Descrição da vaga" required></textarea><br>
-        <button type="submit">Publicar Vaga</button>
+        <button type="submit" name="btn_enviar">Publicar Vaga</button>
     </form>
 </body>
 

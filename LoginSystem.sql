@@ -31,7 +31,7 @@ CREATE TABLE vagas (
     empresa_id INT,
     titulo VARCHAR(100) NOT NULL,
     descricao TEXT,
-    FOREIGN KEY (empresa_id) REFERENCES empresas(id)
+    data_cadastro DATE 
 );
 
 CREATE TABLE candidatos (
@@ -45,12 +45,21 @@ CREATE TABLE candidaturas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     vaga_id INT,
     candidato_id INT,
+    
     FOREIGN KEY (vaga_id) REFERENCES vagas(id),
     FOREIGN KEY (candidato_id) REFERENCES candidatos(id)
+);
+
+CREATE TABLE tempo (
+	
+	
 );
 
 
 SELECT * FROM usuario;
 SELECT * FROM empresas;
-SELECT * FROM vagas;
+SELECT * FROM vagas ORDER BY data_cadastro;
 SELECT * FROM candidaturas;
+
+DROP TABLE candidaturas;
+DROP TABLE vagas;
