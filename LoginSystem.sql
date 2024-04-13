@@ -50,10 +50,6 @@ CREATE TABLE candidaturas (
     FOREIGN KEY (candidato_id) REFERENCES candidatos(id)
 );
 
-CREATE TABLE tempo (
-	
-	
-);
 
 
 SELECT * FROM usuario;

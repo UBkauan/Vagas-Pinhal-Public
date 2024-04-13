@@ -4,8 +4,7 @@ include_once("conexao.php");
 session_start(); // Iniciar sessão
 
 
-if (isset($_POST['btn_enviar']))
-{
+if (isset($_POST['btn_enviar'])) {
     $tituloVaga = $_POST['titulo'];
     $descricaoVaga = $_POST['descricao'];
     $data_cadastro = date('d/m/y H:i:s');
@@ -14,16 +13,15 @@ if (isset($_POST['btn_enviar']))
     $sql1 = "SELECT * FROM vagas WHERE titulo = '$tituloVaga' AND descricao = '$descricaoVaga';";
     $verifica = mysqli_query($conexao, $sql1);
 
-    echo $data_cadastro;
-    if (mysqli_num_rows($verifica) == 0)
-    {
-        if (mysqli_query($conexao,$sql)){
-            echo 'Vaga enviada com sucesso';
-        }
+
+
+    if ($conexao->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conexao->error;
     }
 }
 ?>
-
 
 
 
@@ -34,6 +32,7 @@ if (isset($_POST['btn_enviar']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 
 <body>
@@ -45,6 +44,7 @@ if (isset($_POST['btn_enviar']))
         <textarea name="descricao" placeholder="Descrição da vaga" required></textarea><br>
         <button type="submit" name="btn_enviar">Publicar Vaga</button>
     </form>
+    
 </body>
 
 </html>
