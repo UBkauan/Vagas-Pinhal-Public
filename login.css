@@ -24,6 +24,17 @@ body {
 .input-box{
     display: flex;
     flex-direction: column;
+    gap: 14px;
+    
+}
+
+.input-box input{
+    background-color: #B0BAC3;
+    opacity: 40%;
+}
+
+.input-box input::placeholder{
+    color: #181D2E;
 }
 
 
@@ -40,7 +51,7 @@ body {
 
 
 .logo img {
-    width: 130px;
+    width: 150px;
     margin-left: 120px;
 
 }
@@ -67,6 +78,16 @@ nav {
     justify-content: center;
     gap: 20px;
     margin-right: 50px;
+    font-size: 0.9rem;
+}
+
+.div-botao a{
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px;
+    width: 5rem;
+    text-align: center;
 }
 
 

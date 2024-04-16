@@ -24,21 +24,31 @@
                 <h2>Cadastre Sua Empresa</h2>
             </div>
             <form id="empresaForm" action="cadastro_empresa.php" method="POST">
+                <div class="input-box">
+                    <label for="nome_empresa">Nome da Empresa:</label>
+                    <input type="text" id="nome_empresa" name="nome_empresa">
+                </div>
 
-                <label for="nome_empresa">Nome da Empresa:</label>
-                <input type="text" id="nome_empresa" name="nome_empresa">
+                <div class="input-box">
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj">
+                </div>
 
-                <label for="cnpj">CNPJ:</label>
-                <input type="text" id="cnpj" name="cnpj">
+                <div class="input-box">
+                    <label for="email_empresa">Email Corporativo:</label>
+                    <input type="email" id="email_empresa" name="email_empresa">
+                </div>
 
-                <label for="email_empresa">Email Corporativo:</label>
-                <input type="email" id="email_empresa" name="email_empresa">
+                <div class="input-box">
+                    <label for="senha_empresa">Senha:</label>
+                    <input type="password" id="senha_empresa" name="senha_empresa">
+                </div>
 
-                <label for="senha_empresa">Senha:</label>
-                <input type="password" id="senha_empresa" name="senha_empresa">
+                <div class="input-box">
+                    <label for="endereco_empresa">Endereço:</label>
+                    <input type="text" id="endereco_empresa" name="endereco_empresa">
+                </div>
 
-                <label for="endereco_empresa">Endereço:</label>
-                <input type="text" id="endereco_empresa" name="endereco_empresa">
 
                 <p>Já tem uma conta? <a href="Login_empresa.php">Conectar-se</a></p>
                 <p>É um usuário? <a href="cadastro.php">Cadastre-se Grátis aqui!</a></p>

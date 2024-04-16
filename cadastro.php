@@ -24,18 +24,31 @@
     <div class="container">
         <div class="form-container">
             <div class="image-container"></div>
+
             <div class="form-text">
                 <h2>Crie Sua Conta Grátis</h2>
             </div>
+
             <form id="userForm" action="cadastro.php" method="POST">
+                <div class="input-box">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome">
+                </div>
+
+                <div class="input-box">
                 <label for="sobrenome">Sobrenome:</label>
                 <input type="text" id="sobrenome" name="sobrenome">
+                </div>
+
+                <div class="input-box">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email">
+                </div>
+
+                <div class="input-box">
                 <label for="senha">Senha:</label>
                 <input type="password" id="senha" name="senha">
+                </div>
 
                 <p>Já tem uma conta? <a href="Login.php"> Conectar-se</a></p>
                 <p>É uma empresa? <a href="Cadastro_empresa.php">Cadastre-se Grátis aqui!</a></p>

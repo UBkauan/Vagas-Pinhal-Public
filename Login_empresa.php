@@ -22,9 +22,7 @@ include('conexao.php');
         </div>
 
         <div class="div-botao">
-
-            <button id="entrar"><a href="index.php">Home</a></button>
-
+            <a href="index.php">Home</a>
         </div>
 
 
@@ -36,15 +34,15 @@ include('conexao.php');
 
             <form id="userForm" action="Login_empresa.php" method="POST">
                 <div class="form-text">
-                    <h2>Logar</h2>
+                    <h2>Acesse sua conta</h2>
                 </div>
                 <div class="input-box">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" placeholder="Coloque seu E-mail institucional">
                 </div>
                 <div class="input-box">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha">
+                    <input type="password" id="senha" name="senha" placeholder="Coloque sua Senha">
                 </div>
                 <div class="btn-box">
                     <input type="submit" value="Entrar" id="btn-logar">

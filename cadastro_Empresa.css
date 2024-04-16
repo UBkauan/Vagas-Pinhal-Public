@@ -23,7 +23,7 @@ body {
 .form-container {
     flex: 1;
     padding: 15px;
-    height: 450px; 
+    height: 450px;
 }
 
 .form-text {
@@ -34,7 +34,8 @@ body {
     width: 350px;
     height: 600px;
 }
-form{
+
+form {
     width: 200px;
 }
 
@@ -44,9 +45,24 @@ form{
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+}
+
+.input-box input {
+    background-color: #B0BAC3;
+    opacity: 40%;
+}
+
+.input-box input::placeholder {
+    color: #000000;
 }
 
 .container {

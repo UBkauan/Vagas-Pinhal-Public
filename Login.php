@@ -22,9 +22,7 @@ include('conexao.php');
         </div>
 
         <div class="div-botao">
-
-            <button id="entrar"><a href="index.php">Home</a></button>
-
+            <a href="index.php">Home</a>
         </div>
 
 
@@ -40,11 +38,14 @@ include('conexao.php');
                 </div>
                 <div class="input-box">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" placeholder="Coloque seu Email">
                 </div>
                 <div class="input-box">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha">
+                    <input type="password" id="senha" name="senha" placeholder="Coloque senha">
+                </div>
+                <div class="class">
+                    <p>É uma empresa? <a href="Login_empresa.php"> Conecte-se agora!</a></p>
                 </div>
                 <div class="btn-box">
                     <input type="submit" value="Entrar" id="btn-logar">
@@ -57,7 +58,7 @@ include('conexao.php');
                     $password = $_POST['senha'];
 
                     $sql = "SELECT * FROM usuario WHERE email='$email'";
-                    $res = $conexao->query($sql);   
+                    $res = $conexao->query($sql);
 
                     if ($res && $res->num_rows > 0) {
                         $usuario = $res->fetch_assoc();

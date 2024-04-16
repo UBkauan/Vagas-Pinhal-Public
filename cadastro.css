@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,17 +9,12 @@ body {
 }
 
 .container {
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 800px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    top: 35%;
-    left: 3%;
-    transform: translate(35%, 3%);
+    
 }
 
 .form-container {
@@ -53,6 +49,23 @@ body {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.input-box input {
+    background-color: #B0BAC3;
+    opacity: 40%;
+}
+
+.input-box input::placeholder {
+    color: #181D2E;
+}
+
 .container {
     width: 800px;
     background-color: #fff;
@@ -138,7 +151,7 @@ nav {
 
 }
 
-.form-container div{
+.form-container div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,11 +164,15 @@ nav {
     bottom: 0;
     height: 600px;
     width: 400px;
-    background-image: url('img/bitmap.svg'); /* Substitua 'imagem.jpg' pelo caminho da sua imagem */
+    background-image: url('img/bitmap.svg');
+    /* Substitua 'imagem.jpg' pelo caminho da sua imagem */
     background-size: cover;
     background-position: center;
-    padding-right: 20px; /* Adiciona espaço entre a imagem e o formulário */
-    border-right: 1px solid #ccc; /* Adiciona borda divisória */
-    box-sizing: border-box; /* Mantém o padding dentro da largura total */
+    padding-right: 20px;
+    /* Adiciona espaço entre a imagem e o formulário */
+    border-right: 1px solid #ccc;
+    /* Adiciona borda divisória */
+    box-sizing: border-box;
+    /* Mantém o padding dentro da largura total */
     background-color: #7C838A;
 }
