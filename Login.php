@@ -14,19 +14,21 @@ include('conexao.php');
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
+    <div class="menu_home">
+        <nav>
+            <div class="logo">
 
-            <img src="img/VagasPinhal.svg" alt="">
+                <img src="img/VagasPinhal.svg" alt="">
 
-        </div>
+            </div>
 
-        <div class="div-botao">
-            <a href="index.php">Home</a>
-        </div>
+            <div class="div-botao">
+                <a href="index.php">Home</a>
+            </div>
 
 
-    </nav>
+        </nav>
+    </div>
     <div class="container">
 
         <div class="form-container">
@@ -77,10 +79,13 @@ include('conexao.php');
                 }
 
                 ?>
+               
             </form>
+            
         </div>
     </div>
-
+    
+    
 </body>
 
 </html>

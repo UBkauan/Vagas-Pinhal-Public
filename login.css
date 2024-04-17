@@ -8,8 +8,10 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+
 .container {
     width: 800px;
+    height: 500px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
@@ -19,9 +21,10 @@ body {
     justify-content: center;
     top: 60%;
     left: 50%;
-    transform: translate(-50%,-60%);
-    position: fixed;
+    transform: translate(-50%,-50%);
+    position: absolute;
 }
+
 .input-box{
     display: flex;
     flex-direction: column;

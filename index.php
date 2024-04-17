@@ -20,8 +20,10 @@
 
                 <div class="div-botao">
 
-                    <button id="entrar"><a href="Login.php">Entrar <hr></a></button>
-            
+                    <button id="entrar"><a href="Login.php">Entrar
+                            <hr>
+                        </a></button>
+
                     <button id="cadastro"><a href="cadastro.php">Cadastre-se Gratuitamente</a></button>
 
                 </div>
@@ -69,7 +71,7 @@
 
             <li>
                 <div class="itens--pimg">
-                    <p style="font-size: 30px;">Estamos ao seu lado <br>
+                    <p style="font-size: 30px;" class="animate__animated animate__bounce">Estamos ao seu lado <br>
                         para apoiar sua jornada <br>
                         profissional</p>
 
@@ -132,7 +134,7 @@
 
                     <li class="tips__article-wrapper">
                         <article class="tips__article">
-                            <img class="tips__image" src="img/HomemComprimentando.png" height="363" width="281">
+                            <a href="profissoes.php"><img class="tips__image" src="img/HomemComprimentando.png" height="363" width="281"></a>
                             <div class="tips__content">
                                 <h3 class="tips__text">25 perguntas da entrevista de emprego e suas melhores
                                     respostas</h3>
@@ -143,7 +145,7 @@
                     <li class="tips__article-wrapper">
                         <a class="tips__item-link">
                             <article class="tips__article">
-                                <img class="tips__image" src="img/HomemSorrindo.png">
+                                <a href="profissoes.php"><img class="tips__image" src="img/HomemSorrindo.png"></a>
                                 <div class="tips__content">
                                     <h3 class="tips__text">15 habilidades e competências que valorizam o currículo</h3>
                                 </div>
@@ -154,7 +156,7 @@
                     <li class="tips__article-wrapper">
                         <a class="tips__item-link">
                             <article class="tips__article">
-                                <img class="tips__image" src="img/Digitando.png">
+                                <a href="profissoes.php"><img class="tips__image" src="img/Digitando.png"></a>
                                 <div class="tips__content">
                                     <h3 class="tips__text">Resumo profissional: dicas e modelos para destacar seus
                                         diferenciais</h3>
