@@ -134,7 +134,7 @@
 
                     <li class="tips__article-wrapper">
                         <article class="tips__article">
-                            <a href="profissoes.php"><img class="tips__image" src="img/HomemComprimentando.png" height="363" width="281"></a>
+                            <a href="entrevista-emprego.html"><img class="tips__image" src="img/HomemComprimentando.png" height="363" width="281"></a>
                             <div class="tips__content">
                                 <h3 class="tips__text">25 perguntas da entrevista de emprego e suas melhores
                                     respostas</h3>
@@ -145,7 +145,7 @@
                     <li class="tips__article-wrapper">
                         <a class="tips__item-link">
                             <article class="tips__article">
-                                <a href="profissoes.php"><img class="tips__image" src="img/HomemSorrindo.png"></a>
+                                <a href="habilidades-e-competencias.html"><img class="tips__image" src="img/HomemSorrindo.png"></a>
                                 <div class="tips__content">
                                     <h3 class="tips__text">15 habilidades e competências que valorizam o currículo</h3>
                                 </div>
@@ -156,7 +156,7 @@
                     <li class="tips__article-wrapper">
                         <a class="tips__item-link">
                             <article class="tips__article">
-                                <a href="profissoes.php"><img class="tips__image" src="img/Digitando.png"></a>
+                                <a href="entrevista-emprego.html"><img class="tips__image" src="img/Digitando.png"></a>
                                 <div class="tips__content">
                                     <h3 class="tips__text">Resumo profissional: dicas e modelos para destacar seus
                                         diferenciais</h3>

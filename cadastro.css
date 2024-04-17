@@ -42,8 +42,7 @@ body {
 }
 
 .input-box input {
-    background-color: #B0BAC3;
-    opacity: 40%;
+    background-color: #b0bac38c;
 }
 
 .input-box input::placeholder {
@@ -61,7 +60,7 @@ body {
     justify-content: center;
     top: 60%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-60%);
     position: fixed;
 }
 

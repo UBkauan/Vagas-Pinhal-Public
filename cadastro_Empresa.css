@@ -55,12 +55,11 @@ form {
 }
 
 .input-box input {
-    background-color: #B0BAC3;
-    opacity: 40%;
+    background-color: #b0bac38c;
 }
 
-.input-box input::placeholder {
-    color: #000000;
+#nome_empresa::placeholder{
+    color: #181D2E;
 }
 
 .container {
@@ -72,9 +71,10 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 35%;
-    left: 3%;
-    transform: translate(35%, 3%);
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    position: fixed;
 }
 
 
@@ -146,12 +146,13 @@ nav {
     cursor: pointer;
 
 }
+.btn_criar{
+    display: flex;
+    justify-content: center;
+}
 
 .form-container div {
-    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .image-container {

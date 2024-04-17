@@ -26,33 +26,33 @@
             <form id="empresaForm" action="cadastro_empresa.php" method="POST">
                 <div class="input-box">
                     <label for="nome_empresa">Nome da Empresa:</label>
-                    <input type="text" id="nome_empresa" name="nome_empresa">
+                    <input type="text" id="nome_empresa" name="nome_empresa" placeholder="Noma da empresa">
                 </div>
 
                 <div class="input-box">
                     <label for="cnpj">CNPJ:</label>
-                    <input type="text" id="cnpj" name="cnpj">
+                    <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
                 </div>
 
                 <div class="input-box">
                     <label for="email_empresa">Email Corporativo:</label>
-                    <input type="email" id="email_empresa" name="email_empresa">
+                    <input type="email" id="email_empresa" name="email_empresa" placeholder="Nome da empresa">
                 </div>
 
                 <div class="input-box">
                     <label for="senha_empresa">Senha:</label>
-                    <input type="password" id="senha_empresa" name="senha_empresa">
+                    <input type="password" id="senha_empresa" name="senha_empresa" placeholder="Sua senha">
                 </div>
 
                 <div class="input-box">
                     <label for="endereco_empresa">Endereço:</label>
-                    <input type="text" id="endereco_empresa" name="endereco_empresa">
+                    <input type="text" id="endereco_empresa" name="endereco_empresa" placeholder="Localização">
                 </div>
 
 
                 <p>Já tem uma conta? <a href="Login_empresa.php">Conectar-se</a></p>
                 <p>É um usuário? <a href="cadastro.php">Cadastre-se Grátis aqui!</a></p>
-                <div>
+                <div class="btn_criar">
                     <input type="submit" value="Criar Conta">
                 </div>
                 <?php

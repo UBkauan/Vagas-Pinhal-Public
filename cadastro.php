@@ -32,22 +32,22 @@
             <form id="userForm" action="cadastro.php" method="POST">
                 <div class="input-box">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome">
+                <input type="text" id="nome" name="nome" placeholder="Seu nome">
                 </div>
 
                 <div class="input-box">
                 <label for="sobrenome">Sobrenome:</label>
-                <input type="text" id="sobrenome" name="sobrenome">
+                <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
                 </div>
 
                 <div class="input-box">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" placeholder="Seu Email">
                 </div>
 
                 <div class="input-box">
                 <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha">
+                <input type="password" id="senha" name="senha" placeholder="Sua senha">
                 </div>
 
                 <p>Já tem uma conta? <a href="Login.php"> Conectar-se</a></p>
