@@ -8,29 +8,13 @@ body {
     font-family: "Inter", sans-serif;
 }
 
-.container {
-    transform: translate(-50%, -50%);
-    width: 800px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
-}
-
-.form-container {
-    flex: 1;
-    padding: 20px;
-    height: 550px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
 
 .form-text {
     margin-right: 60px;
 }
-
+.form-text h2{
+    padding-bottom: 30px;
+}
 .form-container form {
     width: 350px;
     height: 400px;
@@ -75,9 +59,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 35%;
-    left: 3%;
-    transform: translate(35%, 3%);
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: fixed;
 }
 
 
@@ -86,7 +71,6 @@ body {
     flex: 1;
     padding: 20px;
     height: 550px;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -153,7 +137,6 @@ nav {
 
 .form-container div {
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 

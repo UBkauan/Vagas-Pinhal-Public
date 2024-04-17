@@ -17,9 +17,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 35%;
-    left: 3%;
-    transform: translate(35%, 3%);
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    position: fixed;
 }
 .input-box{
     display: flex;

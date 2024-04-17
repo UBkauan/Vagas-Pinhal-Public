@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=], initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
-    <link rel="shortcut icon" type="" href="img/VagasPinhal.svg" style="width: 800px;">
+    <link rel="shortcut icon" tpe="" href="img/VagasPinhal.svg" style="width: 800px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Vagas Pinhal</title>
 </head>
 
@@ -19,8 +20,8 @@
 
                 <div class="div-botao">
 
-                    <button id="entrar"><a href="Login.php">Entrar</a></button>
-
+                    <button id="entrar"><a href="Login.php">Entrar <hr></a></button>
+            
                     <button id="cadastro"><a href="cadastro.php">Cadastre-se Gratuitamente</a></button>
 
                 </div>

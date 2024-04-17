@@ -14,10 +14,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+    top: 60%;
+    left: 60%;
+    transform: translate(-30%,-30%);
+    
 }
 
 .form-container {
@@ -50,10 +50,8 @@ form {
 }
 
 .input-box {
-    display: flex;
     flex-direction: column;
     gap: 14px;
-
 }
 
 .input-box input {

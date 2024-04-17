@@ -16,40 +16,32 @@
         include_once "conexao.php";
         $sql = "SELECT * FROM  vagas ORDER BY data_cadastro;";
         $resultado = mysqli_query($conexao, $sql);
-        while ($dados = mysqli_fetch_assoc($resultado)) {
-            echo '
-            <div >
-        <span>titulo: ' . $dados["titulo"] . '</span><br>
-        <span>descricão: ' . $dados["descricao"] . '</span><br>
-        </div>
-        ';
-        }
         ?>
         <div class="container">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Título</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">data</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $result = $conexao->query($sql1);
+                    $result = $conexao->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo ' <tr>
                       <th scope="row">' . $row["titulo"] . '</th>
                       <td>' . $row["descricao"] . '</td>
-                      <td>' . $row["data_cadastro"] . '</td>
+                      <td>' . date_format(date_create($row["data_cadastro"]), 'd/m/Y') . '</td>
                      </tr>';
                         }
                     } else {
                         echo "0 results";
                     }
-                    $conn->close();
+                    $conexao->close();
                     ?>
                 </tbody>
             </table>
