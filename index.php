@@ -156,7 +156,7 @@
                     <li class="tips__article-wrapper">
                         <a class="tips__item-link">
                             <article class="tips__article">
-                                <a href="entrevista-emprego.html"><img class="tips__image" src="img/Digitando.png"></a>
+                                <a href="resumo-profissional-qualificacoes-e-diferenciais.html"><img class="tips__image" src="img/Digitando.png"></a>
                                 <div class="tips__content">
                                     <h3 class="tips__text">Resumo profissional: dicas e modelos para destacar seus
                                         diferenciais</h3>

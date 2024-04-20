@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +15,43 @@
 
 <body>
     <div class="resultado">
-
+        <a href="index.php">Voltar</a>
+        <div class="User_name">
+            <p></p>
+        </div>
         <?php
         include_once "conexao.php";
-        $sql = "SELECT * FROM  vagas ORDER BY data_cadastro;";
+        $sql = "SELECT * FROM  usuario;";
         $resultado = mysqli_query($conexao, $sql);
         ?>
         <div class="container">
+        <table class="table">
+                <thead>
+                        <th scope="col">Nome</th>
+                </thead>
+                <tbody>
+                    <?php
+                    $result = $conexao->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '
+                            <th scope="row">' . $row["nome"] . '</th>
+                             ';
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $conexao->close();
+                    ?>
+                </tbody>
+            </table>
+
+
+
+
+
+
             <table class="table">
                 <thead>
                     <tr>
@@ -32,7 +66,9 @@
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo ' <tr>
+                            echo '<tr>
+                            <th scope="row">' . $row["titulo"] . '</th>
+                             <tr>
                       <th scope="row">' . $row["titulo"] . '</th>
                       <td>' . $row["descricao"] . '</td>
                       <td>' . date_format(date_create($row["data_cadastro"]), 'd/m/Y') . '</td>
