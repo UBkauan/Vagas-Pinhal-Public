@@ -42,13 +42,21 @@ include('conexao.php');
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Coloque seu Email">
                 </div>
+
+                <div class="input-box">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                </div>
+
                 <div class="input-box">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" placeholder="Coloque senha">
                 </div>
+
                 <div class="class">
                     <p>É uma empresa? <a href="Login_empresa.php"> Conecte-se agora!</a></p>
                 </div>
+
                 <div class="btn-box">
                     <input type="submit" value="Entrar" id="btn-logar">
                 </div>
@@ -58,6 +66,7 @@ include('conexao.php');
                     include('conexao.php');
                     $email = $_POST['email'];
                     $password = $_POST['senha'];
+                    $name = $_POST['nome'];
 
                     $sql = "SELECT * FROM usuario WHERE email='$email'";
                     $res = $conexao->query($sql);
@@ -68,6 +77,7 @@ include('conexao.php');
                             session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["email"] = $email;
+                            $_SESSION['nome'] = $name;
                             header("Location: user-area.php");
                             exit;
                         } else {
