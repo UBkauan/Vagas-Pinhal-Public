@@ -69,72 +69,78 @@ if (!isset($_SESSION['nome']))
                 <div class="User_name">
                     <div id="userName"><?php echo $_SESSION['nome']; ?></div>
                 </div>
-                <div id="iten-imgArrow">
-                    <img src="img/augusto-calheiros 1.png" alt="">
-                    <a href="#">
-                        <span class="material-symbols-outlined">
-                            arrow_drop_down
-                        </span>
-                    </a>
+                <div class="dropdown">
+
+                    <div id="iten-imgArrow">
+                        <img src="img/augusto-calheiros 1.png" alt="">
+                        <a href="#">
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                            <span class="material-symbols-outlined" class="dropbtn">
+                                arrow_drop_down
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </footer>
 
+        <main>
 
-
-        <div class="div_usuario">
-            <div class="imgFundo">
-                <img src="img/cavalo.svg" alt="" id="cavalo">
-                <div style="width: 254px;">
-                    <img src="img/augusto-calheiros 1.png" alt="" id="user-img">
+            <div class="div_usuario">
+                <div class="imgFundo">
+                    <img src="img/cavalo.svg" alt="" id="cavalo">
+                    <div style="width: 254px;">
+                        <img src="img/augusto-calheiros 1.png" alt="" id="user-img">
+                    </div>
                 </div>
+
+                <div class="info-user">
+                    <p id="name-user"><?php echo $_SESSION['nome']; ?></p>
+                    <p>Profissão</p>
+                    <hr>
+                </div>
+
             </div>
 
-        </div>
-        <div class="div_anucio">
-            <p></p>
+            <div class="teste">
+            <div style="width: 254px;" class="img-name">
+            
+                        <img src="img/mercado.png" alt="" class="perfil_img">
+                        <p>Supermercado Biazoto Ltda</p>
+                        <div class="descricao-vagas">
+                            <p>'.$dados["descricao"].'</p>
 
-        </div>
+                        </div>
+                    </div>
+                
 
+                <div>
+                </div>
+                <?php
 
-        <?php
-        include_once "conexao.php";
-        $sql = "SELECT * FROM  vagas;";
-        $resultado = mysqli_query($conexao, $sql);
-        ?>
-        <div class="container">
+                include_once "conexao.php";
+                $sql = "SELECT * FROM  vagas;";
+                $resultado = mysqli_query($conexao, $sql);
+                $result = $conexao->query($sql);
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Título</th>
-                        <th scope="col">Descrição</th>
-                        <th scope="col">data</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $result = $conexao->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<tr>
-                            
-                                       <th scope="row">' . $row["titulo"] . '</th>
-                                       <td>' . $row["descricao"] . '</td>
-                                       <td>' . date_format(date_create($row["data_cadastro"]), 'd/m/Y') . '</td>
-                                    
-                                   </tr>';
-                        }
-                    } else {
-                        echo "0 results";
+                if ($result->num_rows > 0) {
+                    while ($dados = $result->fetch_assoc()) {
+                        echo '';
                     }
+                } else {
+                    echo "0 results";
+                }
 
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                ?>
+            </div>
+
+
+        </main>
+
 
     </div>
 </body>
