@@ -1,5 +1,6 @@
 <?php
 include('conexao.php');
+session_start()
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +42,10 @@ include('conexao.php');
                     <input type="email" id="email" name="email" placeholder="Coloque seu E-mail institucional">
                 </div>
                 <div class="input-box">
+                    <label for="nome">Nome da Empresa:</label>
+                    <input type="text" id="nome" name="nomeEmpresa" placeholder="Nome da sua instituição">
+                </div>
+                <div class="input-box">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" placeholder="Coloque sua Senha">
                 </div>
@@ -48,7 +53,7 @@ include('conexao.php');
                     <input type="submit" value="Entrar" id="btn-logar">
                 </div>
                 <?php
-                session_start();
+
 
                 // Verifica se os campos foram submetidos
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -69,21 +74,23 @@ include('conexao.php');
                     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
                     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
 
+
+
                     // Consulta no banco de dados para verificar se o email existe
-                    $sql = "SELECT id, email, senha FROM empresas WHERE email=?";
+                    $sql = "SELECT id, email, senha, nome_empresa FROM empresas WHERE email=?";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $email);
                     $stmt->execute();
                     $result = $stmt->get_result();
+                    $empresa = $_POST['nomeEmpresa'];
 
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         $senha_hash = $row['senha'];
-
                         // Verifica a senha
                         if (password_verify($senha, $senha_hash)) {
-                            $_SESSION['empresa_id'] = $row['id'];
                             $_SESSION['email_empresa'] = $row['email'];
+                            $_SESSION['nomeEmpresa'] = $empresa;
                             header("Location: empresa-area.php");
                             exit();
                         } else {

@@ -24,7 +24,9 @@ if (!isset($_SESSION['nome']))
     <div class="resultado">
 
         <footer>
-            <img src="img/VagasPinhal.svg" alt="" class="img_vagasPinhal">
+            <a href="index.php">
+                <img src="img/VagasPinhal.svg" alt="" class="img_vagasPinhal">
+            </a>
             <div id="nav_bar1">
                 <a href="index.php">
                     <div id="nav_home">
@@ -107,19 +109,7 @@ if (!isset($_SESSION['nome']))
             </div>
 
             <div class="teste">
-            <div style="width: 254px;" class="img-name">
-            
-                        <img src="img/mercado.png" alt="" class="perfil_img">
-                        <p>Supermercado Biazoto Ltda</p>
-                        <div class="descricao-vagas">
-                            <p>'.$dados["descricao"].'</p>
 
-                        </div>
-                    </div>
-                
-
-                <div>
-                </div>
                 <?php
 
                 include_once "conexao.php";
@@ -129,7 +119,20 @@ if (!isset($_SESSION['nome']))
 
                 if ($result->num_rows > 0) {
                     while ($dados = $result->fetch_assoc()) {
-                        echo '';
+                        echo '<div style="width: 254px;" class="img-name">
+
+                        <img src="img/mercado.png" alt="" class="perfil_img">
+                        <p>Supermercado Biazoto Ltda</p>
+                     </div>
+                     <div class="descricao-vagas">
+                        <p>' . $dados["descricao"] . '</p>
+                        <p>' . $dados["data_cadastro"] . '</p>
+    
+                        </div>
+                        <img src="img/padeiro.svg" alt="" style="width: 590px;">
+    
+                    <div>
+                    </div>';
                     }
                 } else {
                     echo "0 results";
