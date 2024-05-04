@@ -1,6 +1,7 @@
 <?php
+session_start();
 include('conexao.php');
-session_start()
+
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +78,7 @@ session_start()
 
 
                     // Consulta no banco de dados para verificar se o email existe
-                    $sql = "SELECT id, email, senha, nome_empresa FROM empresas WHERE email=?";
+                    $sql = "SELECT * FROM empresas WHERE email=?";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $email);
                     $stmt->execute();
@@ -89,8 +90,10 @@ session_start()
                         $senha_hash = $row['senha'];
                         // Verifica a senha
                         if (password_verify($senha, $senha_hash)) {
+                            $_SESSION['logo1'] = $row['logo'];
                             $_SESSION['email_empresa'] = $row['email'];
-                            $_SESSION['nomeEmpresa'] = $empresa;
+                            $_SESSION['nomeEmpresa'] = $row['nome_empresa'];
+                            
                             header("Location: empresa-area.php");
                             exit();
                         } else {

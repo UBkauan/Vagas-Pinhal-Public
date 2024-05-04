@@ -23,6 +23,7 @@ CREATE TABLE empresas (
     endereco VARCHAR(255),
     cidade VARCHAR(255),
     estado VARCHAR(255),
+ 
     cep VARCHAR(10)
 );
 
@@ -31,7 +32,8 @@ CREATE TABLE vagas (
     empresa_id INT,
     titulo VARCHAR(100) NOT NULL,
     descricao TEXT,
-    data_cadastro DATE 
+    data_cadastro DATE,
+     imagem VARCHAR(255), 
 );
 
 CREATE TABLE candidatos (
