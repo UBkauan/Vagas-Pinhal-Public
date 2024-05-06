@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,7 +29,7 @@
                 <h2>Crie Sua Conta Grátis</h2>
             </div>
 
-            <form id="userForm" action="cadastro.php" method="POST">
+            <form id="userForm" action="cadastro.php" method="post">
                 <div class="input-box">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" placeholder="Seu nome">
@@ -61,7 +60,7 @@
                 $usuario = "root";
                 $senha = "";
                 $url = "localhost";
-                $database = "LoginSystem";
+                $database = "loginsystem";
 
                 $conn = mysqli_connect($url, $usuario, $senha, $database);
 
@@ -71,17 +70,14 @@
                 }
 
                 // Coleta dados do formulário e filtra
-                $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+                $name = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
                 $sobrenome = filter_input(INPUT_POST, 'sobrenome', FILTER_SANITIZE_STRING);
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
                 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
-                $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
-                $cidade = filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_STRING);
-                $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING);
-                $cep = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_STRING);
+                
 
                 // Validação básica dos campos obrigatórios
-                if (empty($nome) || empty($sobrenome) || empty($email) || empty($senha)) {
+                if (empty($name) || empty($sobrenome) || empty($email) || empty($senha)) {
                     echo "Todos os campos obrigatórios devem ser preenchidos.";
                     exit;
                 }
@@ -90,9 +86,9 @@
                 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
                 // Insere dados na tabela 'usuario'
-                $sql = "INSERT INTO usuario (senha, email, nome, sobrenome, endereco, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO usuario (senha, email, nome, sobrenome) VALUES (?, ?, ?, ?);";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("ssssssss", $senhaHash, $email, $nome, $sobrenome, $endereco, $cidade, $estado, $cep);
+                $stmt->bind_param("ssss", $senhaHash, $email, $name, $sobrenome);
 
                 if ($stmt->execute()) {
                     echo "Cadastro realizado com sucesso!";

@@ -4,9 +4,6 @@ session_start(); // Iniciar sessão
 include_once("conexao.php");
 include_once("upload_file.php");
 
-
-if (!isset($_SESSION['nomeEmpresa'])) {
-}
 if (isset($_POST['btn_enviar'])) {
 
     $tituloVaga = $_POST['titulo'];
@@ -105,15 +102,14 @@ if (isset($_POST['btn_enviar'])) {
 
                     <div id="iten-imgArrow">
                         <img src="img/augusto-calheiros 1.png" alt="">
-                        <a href="#">
-                            <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                            <span class="material-symbols-outlined" class="dropbtn">
-                                arrow_drop_down
+                        <div class="dropdown">
+                            <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;">
                             </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="index.php">Desconectar</a></li>
+                            </ul>
+                        </div>
+
                         </a>
                     </div>
                 </div>
@@ -124,7 +120,7 @@ if (isset($_POST['btn_enviar'])) {
             <div class="row">
                 <div class="col-3">
                     <div class="imgFundo">
-                        <img src="img/cavalo.svg" alt="" id="cavalo">
+                        <img src="img/fundo_blue.svg" alt="" id="cavalo">
                         <div style="width: 254px;">
                             <img src="img/augusto-calheiros 1.png" alt="" id="user-img">
                         </div>
@@ -135,27 +131,38 @@ if (isset($_POST['btn_enviar'])) {
                         <p>Profissão</p>
                         <hr>
                     </div>
-                    <div class="postagem">
-                        <form method="POST" action="" enctype="multipart/form-data">
-                            <input type="text" name="titulo" placeholder="Título da vaga" required><br>
 
-                            <textarea name="descricao" placeholder="Descrição da vaga" required></textarea><br>
-
-
-                            <input type="file" name="fileToUpload" id="fileToUpload" required>
-                            <span id="span_erro"></span>
-
-
-
-                            <button type="submit" name="btn_enviar">Publicar Vaga</button>
-                        </form>
-
-
-                    </div>
                 </div>
 
                 <div class="col-6">
                     <div class="row">
+                        <div class="postagem p-5">
+                            <form method="POST" action="" enctype="multipart/form-data">
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Titulo da vaga</label>
+                                    <input type="text" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Título da vaga">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
+                                    <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input type="file" name="fileToUpload" id="fileToUpload" required>
+
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
+                                    </div>
+                                    <span id="span_erro"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <?php
+                        if (isset($_GET['excluir'])) {
+                            $excluir = $_GET['excluir'];
+                            $sql = "DELETE FROM vagas WHERE id = '$excluir';";
+                            $consulta = mysqli_query($conexao, $sql);
+                            
+                        }
+                        ?>
                         <?php
 
                         include_once "conexao.php";
@@ -166,38 +173,25 @@ if (isset($_POST['btn_enviar'])) {
                             while ($dados = $result->fetch_assoc()) {
                                 echo '
                         <div class="col-8 m-4">
-                          <div class="card shadow-sm">
+                          <div class="card shadow-sm p-4">
                           <div class="row p-2">
                               <div class="col-2"><img src = "' . $_SESSION["logo1"] . '" alt="" class="w-100"></div>
                               <div class="col-10 p-2"><p class="h5">' . $_SESSION["nomeEmpresa"] . ' </p></div></div>
+                              <p class="card-text">' . $dados["descricao"] . '</p>
                           <img src="' . $dados["imagem"] . '" alt="" class="w-100">
                             <div class="card-body">
                               
-                              <p class="card-text">' . $dados["descricao"] . '</p>
+                              
                               <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                  <a class="btn btn-sm btn-outline-secondary" href="empresa-area.php?excluir=' . $dados["id"] . '">Excluir</a>
+                                  <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
                                 </div>
                                 <small class="text-body-secondary">' . $dados["data_cadastro"] . '</small>
                               </div>
                             </div>
                           </div>
                         </div>';
-                                //     echo '<div style="width: 254px;" class="img-name">
-
-                                //     <img src="img/mercado.png" alt="" class="perfil_img">
-                                //     <p>Supermercado Biazoto Ltda</p><i class="bi bi-pencil"></i>
-                                //  </div>
-                                //  <div class="descricao-vagas">
-                                //     <p>' . $dados["descricao"] . '</p>
-                                //     <p>' . $dados["data_cadastro"] . '</p>
-
-                                //     </div>
-                                //     <img src="'.$dados["imagem"].'" alt="" style="width: 590px;">
-
-                                // <div>
-                                // </div>';
                             }
                         } else {
                             echo "0 results";

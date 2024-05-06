@@ -42,10 +42,7 @@ include('conexao.php');
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Coloque seu E-mail institucional">
                 </div>
-                <div class="input-box">
-                    <label for="nome">Nome da Empresa:</label>
-                    <input type="text" id="nome" name="nomeEmpresa" placeholder="Nome da sua instituição">
-                </div>
+                
                 <div class="input-box">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" placeholder="Coloque sua Senha">
@@ -59,10 +56,7 @@ include('conexao.php');
                 // Verifica se os campos foram submetidos
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Conexão com o banco de dados
-                    $usuario = "root";
-                    $senha = "";
-                    $url = "localhost";
-                    $database = "LoginSystem";
+                    include_once("conexao.php");
 
                     $conn = mysqli_connect($url, $usuario, $senha, $database);
 
@@ -83,7 +77,7 @@ include('conexao.php');
                     $stmt->bind_param("s", $email);
                     $stmt->execute();
                     $result = $stmt->get_result();
-                    $empresa = $_POST['nomeEmpresa'];
+
 
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();

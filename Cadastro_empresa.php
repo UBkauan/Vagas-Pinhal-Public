@@ -11,22 +11,22 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="img/VagasPinhal.svg" alt="">
+            <a href="index.php"><img src="img/VagasPinhal.svg" alt=""></a>
         </div>
-        <div class="div-botao">
-            <button id="entrar"><a href="index.php">Home</a></button>
-        </div>
+
     </nav>
+
     <div class="container">
         <div class="form-container">
             <div class="image-container"></div>
             <div class="form-text">
                 <h2>Cadastre Sua Empresa</h2>
             </div>
-            <form id="empresaForm" action="cadastro_empresa.php" method="POST">
+
+            <form id="empresaForm" action="cadastro_empresa.php" method="post">
                 <div class="input-box">
                     <label for="nome_empresa">Nome da Empresa:</label>
-                    <input type="text" id="nome_empresa" name="nome_empresa" placeholder="Noma da empresa">
+                    <input type="text" id="nome_empresa" name="nome_empresa" placeholder="Nome da empresa">
                 </div>
 
                 <div class="input-box">
@@ -57,11 +57,7 @@
                 </div>
                 <?php
                 // Conexão com o banco de dados
-                $usuario = "root";
-                $senha = "";
-                $url = "localhost";
-                $database = "LoginSystem";
-
+                include_once("conexao.php");
                 $conn = mysqli_connect($url, $usuario, $senha, $database);
 
                 // Verifica conexão
@@ -74,24 +70,20 @@
                 $cnpj = filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_STRING);
                 $email_empresa = filter_input(INPUT_POST, 'email_empresa', FILTER_SANITIZE_EMAIL);
                 $senha_empresa = filter_input(INPUT_POST, 'senha_empresa', FILTER_SANITIZE_STRING);
-                $endereco_empresa = filter_input(INPUT_POST, 'endereco_empresa', FILTER_SANITIZE_STRING);
-                $cidade_empresa = filter_input(INPUT_POST, 'cidade_empresa', FILTER_SANITIZE_STRING);
-                $estado_empresa = filter_input(INPUT_POST, 'estado_empresa', FILTER_SANITIZE_STRING);
-                $cep_empresa = filter_input(INPUT_POST, 'cep_empresa', FILTER_SANITIZE_STRING);
-
-                // Validação básica dos campos obrigatórios
-                if (empty($nome_empresa) || empty($cnpj) || empty($email_empresa) || empty($senha_empresa)) {
-                    echo "Todos os campos obrigatórios devem ser preenchidos.";
-                    exit;
-                }
+                $endereco = filter_input(INPUT_POST, 'endereco_empresa', FILTER_SANITIZE_STRING);
 
                 // Hash da senha antes de salvar no banco
                 $senhaHash = password_hash($senha_empresa, PASSWORD_DEFAULT);
 
+                if (empty($nome_empresa) || empty($cnpj) || empty($email_empresa) || empty($senha_empresa) || empty($endereco)) {
+                    echo "Todos os campos obrigatórios devem ser preenchidos.";
+                    exit;
+                }
                 // Insere dados na tabela 'empresas'
-                $sql = "INSERT INTO empresas (nome_empresa, cnpj, email, senha, endereco, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO empresas (nome_empresa, cnpj, email, senha, endereco) VALUES (?,?,?,?,?);";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("ssssssss", $nome_empresa, $cnpj, $email_empresa, $senhaHash, $endereco_empresa, $cidade_empresa, $estado_empresa, $cep_empresa);
+                $stmt->bind_param("sssss", $nome_empresa, $cnpj, $email_empresa, $senhaHash, $endereco);
+
 
                 if ($stmt->execute()) {
                     echo "Cadastro realizado com sucesso!";
@@ -104,7 +96,6 @@
                 $stmt->close();
                 $conn->close();
                 ?>
-
             </form>
             <footer></footer>
         </div>

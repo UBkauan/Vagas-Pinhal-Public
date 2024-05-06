@@ -2,7 +2,7 @@
     $usuario  = "root";
     $senha    = "";
     $url      = "localhost";
-    $database = "LoginSystem";
+    $database = "loginsystem";
     
     $conexao = mysqli_connect($url, $usuario, $senha, $database);
     
