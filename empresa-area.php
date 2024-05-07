@@ -28,6 +28,12 @@ if (isset($_POST['btn_enviar'])) {
     } else
         echo 'imagem nao selecionada';
 }
+if (isset($_GET['excluir'])) {
+    $excluir = $_GET['excluir'];
+    $sql = "DELETE FROM vagas WHERE id = '$excluir';";
+    $consulta = mysqli_query($conexao, $sql);
+}
+
 ?>
 
 
@@ -122,66 +128,57 @@ if (isset($_POST['btn_enviar'])) {
                     <div class="imgFundo">
                         <img src="img/fundo_blue.svg" alt="" id="cavalo">
                         <div style="width: 254px;">
-                            <img src="img/augusto-calheiros 1.png" alt="" id="user-img">
+                            <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
                         </div>
                     </div>
 
                     <div class="info-user">
-                        <p id="name-user"><?php echo $_SESSION['nomeEmpresa']; ?></p>
-                        <p>Profissão</p>
-                        <hr>
+                        <div class="row col-12">
+                            <p id="name-user"><?php echo $_SESSION['nomeEmpresa']; ?></p>
+                        </div>
+                        <hr style="width: 220px;">
                     </div>
 
                 </div>
 
-                <div class="col-6">
-                    <div class="row">
-                        <div class="postagem p-5">
-                            <form method="POST" action="" enctype="multipart/form-data">
+                <div class="postagem col-6">
+                    <form method="POST" action="" enctype="multipart/form-data">
 
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Titulo da vaga</label>
-                                    <input type="text" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Título da vaga">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
-                                    <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    <input type="file" name="fileToUpload" id="fileToUpload" required>
-
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
-                                    </div>
-                                    <span id="span_erro"></span>
-                                </div>
-                            </form>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Titulo da vaga</label>
+                            <input type="text" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Título da vaga">
                         </div>
-                        <?php
-                        if (isset($_GET['excluir'])) {
-                            $excluir = $_GET['excluir'];
-                            $sql = "DELETE FROM vagas WHERE id = '$excluir';";
-                            $consulta = mysqli_query($conexao, $sql);
-                            
-                        }
-                        ?>
-                        <?php
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
+                            <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <input type="file" name="fileToUpload" id="fileToUpload" required>
 
-                        include_once "conexao.php";
-                        $sql = "SELECT * FROM  vagas;";
-                        $resultado = mysqli_query($conexao, $sql);
-                        $result = $conexao->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($dados = $result->fetch_assoc()) {
-                                echo '
-                        <div class="col-8 m-4">
-                          <div class="card shadow-sm p-4">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
+                            </div>
+                            <span id="span_erro"></span>
+                        </div>
+                    </form>
+                </div>
+
+                <?php
+
+                include_once "conexao.php";
+                $sql = "SELECT * FROM  vagas;";
+                $resultado = mysqli_query($conexao, $sql);
+                $result = $conexao->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($dados = $result->fetch_assoc()) {
+                        echo '
+                        
+                        <div class="row col-6 m-4">
+                          <div class="card shadow-sm p-4 col-12">
                           <div class="row p-2">
                               <div class="col-2"><img src = "' . $_SESSION["logo1"] . '" alt="" class="w-100"></div>
                               <div class="col-10 p-2"><p class="h5">' . $_SESSION["nomeEmpresa"] . ' </p></div></div>
                               <p class="card-text">' . $dados["descricao"] . '</p>
                           <img src="' . $dados["imagem"] . '" alt="" class="w-100">
-                            <div class="card-body">
-                              
-                              
+                            <div class="card-body">                              
                               <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                   <a class="btn btn-sm btn-outline-secondary" href="empresa-area.php?excluir=' . $dados["id"] . '">Excluir</a>
@@ -192,15 +189,15 @@ if (isset($_POST['btn_enviar'])) {
                             </div>
                           </div>
                         </div>';
-                            }
-                        } else {
-                            echo "0 results";
-                        }
+                    }
+                } else {
+                    echo "0 results";
+                }
 
-                        ?>
-                    </div>
-                </div>
+                ?>
+
             </div>
+    </div>
     </div>
     </main>
 
