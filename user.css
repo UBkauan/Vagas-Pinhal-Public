@@ -94,9 +94,6 @@ footer {
 .imgFundo {
     width: 254px;
     height: 43px;
-    margin-top: 45px;
-    padding-top: 5px;
-    padding-left: 7%;
 }
 
 #user-img {
@@ -135,11 +132,6 @@ footer {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.info-user {
-    text-align: center;
-    padding-top: 50px;
 }
 
 #name-user {

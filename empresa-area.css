@@ -33,10 +33,9 @@ main {
 footer {
     background: #181D2E;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     flex-direction: row;
-    justify-content: space-around;
 }
 
 .img_vagasPinhal {

@@ -48,8 +48,8 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    $erro= "Só aceita arquivos JPG, JPEG, PNG & GIF ";
+&& $imageFileType != "gif" && $imageFileType != "avif" && $imageFileType != "svg") {
+    $erro= "Só aceita arquivos JPG, JPEG, PNG, GIF & AVIF";
     header("location:empresa-area.php?erro=$erro");    
   $uploadOk = 0;
 }

@@ -25,6 +25,7 @@ CREATE TABLE vagas (
     titulo VARCHAR(100) NOT NULL,
     descricao TEXT,
     data_cadastro DATE,
+    nome_da_empresa VARCHAR(255),
     imagem VARCHAR(255)
 );
 
@@ -38,9 +39,7 @@ CREATE TABLE candidatos (
 CREATE TABLE candidaturas (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     vaga_id INT,
-    candidato_id INT,
-    FOREIGN KEY (vaga_id) REFERENCES vagas(id),
-    FOREIGN KEY (candidato_id) REFERENCES candidatos(id)
+    nome_empresa_id INT
 );
 
 

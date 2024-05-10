@@ -8,15 +8,17 @@ if (isset($_POST['btn_enviar'])) {
 
     $tituloVaga = $_POST['titulo'];
     $descricaoVaga = $_POST['descricao'];
-    $data_cadastro = date('d/m/y H:i:s');
+    $data_cadastro = date('d/m/y');
     $empresa_id = '1';
     $nome_imagem = imagem();
+    $nome_daEmpresa = $_SESSION['nomeEmpresa'];
+
 
 
     if (isset($nome_imagem)) {
-        $sql = "INSERT INTO vagas (empresa_id,titulo,descricao,data_cadastro,imagem) VALUES ('$empresa_id','$tituloVaga','$descricaoVaga','$data_cadastro','$nome_imagem');";
+        $sql = "INSERT INTO vagas (empresa_id,titulo,descricao,data_cadastro,imagem,nome_da_empresa) VALUES ('$empresa_id','$tituloVaga','$descricaoVaga','$data_cadastro','$nome_imagem','$nome_daEmpresa');";
 
-        $sql1 = "SELECT * FROM vagas WHERE titulo = '$tituloVaga' AND descricao = '$descricaoVaga';";
+        $sql1 = "SELECT * FROM vagas WHERE titulo = '$tituloVaga' AND descricao = '$descricaoVaga' AND nome_da_empresa = '$nome_daEmpresa';";
         $verifica = mysqli_query($conexao, $sql1);
 
 
@@ -44,7 +46,7 @@ if (isset($_GET['excluir'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vagas Pinhal Empresas</title>
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -122,60 +124,62 @@ if (isset($_GET['excluir'])) {
             </div>
         </footer>
 
-        <main>
-            <div class="row">
-                <div class="col-3">
-                    <div class="imgFundo">
-                        <img src="img/fundo_blue.svg" alt="" id="cavalo">
-                        <div style="width: 254px;">
-                            <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
-                        </div>
-                    </div>
 
-                    <div class="info-user">
-                        <div class="row col-12">
-                            <p id="name-user"><?php echo $_SESSION['nomeEmpresa']; ?></p>
-                        </div>
-                        <hr style="width: 220px;">
-                    </div>
-
+        <div class="row d-flex justify-content-start align-items-center m-3 g-5">
+        <div class="col-3 d-flex justify-content-center align-items-center flex-column p-5">
+            <div class="imgFundo">
+                <img src="img/fundo_blue.svg" alt="" id="cavalo">
                 </div>
-
-                <div class="postagem col-6">
-                    <form method="POST" action="" enctype="multipart/form-data">
-
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Titulo da vaga</label>
-                            <input type="text" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Título da vaga">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
-                            <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            <input type="file" name="fileToUpload" id="fileToUpload" required>
-
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
-                            </div>
-                            <span id="span_erro"></span>
-                        </div>
-                    </form>
+                <div style="width: 254px;" class="d-flex justify-content-center align-items-center">
+                    <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
                 </div>
+            
 
-                <?php
+            <div class="info-user d-flex justify-content-center align-items-center">
+                <div class="row col-12">
+                    <p id="name-user" class="col-12 text-center"><?php echo $_SESSION['nomeEmpresa']; ?></p>
+                    <hr style="width: 220px;">
+                </div>
+                
+            </div>
 
-                include_once "conexao.php";
-                $sql = "SELECT * FROM  vagas;";
-                $resultado = mysqli_query($conexao, $sql);
-                $result = $conexao->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($dados = $result->fetch_assoc()) {
-                        echo '
-                        
-                        <div class="row col-6 m-4">
-                          <div class="card shadow-sm p-4 col-12">
-                          <div class="row p-2">
+        </div>
+
+            <div class="postagem col-4  d-flex justify-content-center align-items-center">
+                <form method="POST" action="" enctype="multipart/form-data">
+
+                    <div class="mb-2">
+                        <label for="exampleFormControlInput1" class="form-label">Titulo da vaga</label>
+                        <input type="text" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Título da vaga">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
+                        <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <input type="file" name="fileToUpload" id="fileToUpload" required>
+
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
+                        </div>
+                        <span id="span_erro"></span>
+                    </div>
+                </form>
+            </div>
+
+            <?php
+
+            include_once "conexao.php";
+            $sql = "SELECT * FROM  vagas;";
+            $resultado = mysqli_query($conexao, $sql);
+            $result = $conexao->query($sql);
+            if ($result->num_rows > 0) {
+                while ($dados = $result->fetch_assoc()) {
+                    echo '
+                        <div class="row  d-flex justify-content-center align-items-center">
+                        <div class="col-6 m-4">
+                          <div class="card shadow-sm p-4 col-8 ">
+                          <div class="row p-2" >
                               <div class="col-2"><img src = "' . $_SESSION["logo1"] . '" alt="" class="w-100"></div>
-                              <div class="col-10 p-2"><p class="h5">' . $_SESSION["nomeEmpresa"] . ' </p></div></div>
+                              <div class="col-6 p-2"><p class="h5">' . $dados["nome_da_empresa"] . ' </p></div></div>
                               <p class="card-text">' . $dados["descricao"] . '</p>
                           <img src="' . $dados["imagem"] . '" alt="" class="w-100">
                             <div class="card-body">                              
@@ -188,15 +192,15 @@ if (isset($_GET['excluir'])) {
                               </div>
                             </div>
                           </div>
-                        </div>';
-                    }
-                } else {
-                    echo "0 results";
+                        </div></div>';
                 }
+            } else {
+                echo "0 results";
+            }
 
-                ?>
+            ?>
 
-            </div>
+        </div>
     </div>
     </div>
     </main>
