@@ -30,7 +30,7 @@ main {
     justify-content: center;
 }
 
-footer {
+header {
     background: #181D2E;
     display: flex;
     align-items: center;

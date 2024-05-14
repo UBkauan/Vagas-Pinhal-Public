@@ -20,7 +20,7 @@
 
                 <div class="div-botao">
 
-                    <button id="entrar"><a href="Login.php">Entrar
+                    <button id="entrar"><a href="login.php">Entrar
                             <hr>
                         </a></button>
 
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="itemsCadastro">
-                            <a href="Login.php">Já tenho uma conta</a>
+                            <a href="login.php">Já tenho uma conta</a>
                             <a id="btnCriar" href="cadastro.php">Criar conta</a>
                         </div>
 

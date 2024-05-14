@@ -23,7 +23,7 @@ if (!isset($_SESSION['nome']))
 <body>
     <div class="resultado row container-fluid p-0">
 
-        <footer>
+        <header>
             <a href="index.php">
                 <img src="img/VagasPinhal.svg" alt="" class="img_vagasPinhal">
             </a>
@@ -67,28 +67,26 @@ if (!isset($_SESSION['nome']))
             </div>
             <div id="nav_usuario">
 
-
                 <div class="User_name">
-                    <div id="userName"><?php echo $_SESSION['nome']; ?></div>
+                    <div id="userName" style="color: white;"><?php echo $_SESSION['nome']; ?></div>
                 </div>
                 <div class="dropdown">
 
                     <div id="iten-imgArrow">
                         <img src="img/augusto-calheiros 1.png" alt="">
-                        <a href="#">
-                            <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                            <span class="material-symbols-outlined" class="dropbtn">
-                                arrow_drop_down
+                        <div class="dropdown">
+                            <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;">
                             </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="index.php">Desconectar</a></li>
+                            </ul>
+                        </div>
+
                         </a>
                     </div>
                 </div>
             </div>
-        </footer>
+        </header>
 
         <div class="">
             <div class="col-3 d-flex justify-content-center align-items-center flex-column p-5">
@@ -99,34 +97,28 @@ if (!isset($_SESSION['nome']))
                     <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
                 </div>
 
-
                 <div class="info-user d-flex justify-content-center align-items-center">
                     <div class="row col-12">
                         <p id="name-user" class="col-12 text-center"><?php echo $_SESSION['nome']; ?></p>
                         <hr style="width: 220px;">
                     </div>
-
                 </div>
-
             </div>
-
-
 
             <?php
 
-            include_once "conexao.php";
-            $sql = "SELECT * FROM  vagas;";
-            $resultado = mysqli_query($conexao, $sql);
-            $result = $conexao->query($sql);
-            if ($result->num_rows > 0) {
-                while ($dados = $result->fetch_assoc()) {
+            include_once 'conexao.php';
+            $sql = "SELECT * FROM vagas";
+            $resultado = $conexao->query($sql);
+            if ($resultado->num_rows > 0) {
+                while ($dados = $resultado->fetch_assoc()) {
                     echo '
                         <div class="d-flex justify-content-center align-items-center">
                         <div class="col-6 m-4">
                           <div class="card shadow-sm p-4 col-8 ">
                           <div class="row p-2" >
                               <div class="col-2"><img src = "' . $_SESSION["logo1"] . '" alt="" class="w-100"></div>
-                              <div class="col-6 p-2"><p class="h5">' . $dados["nome_da_empresa"] . ' </p></div></div>
+                              <a href="login.php"><div class="col-6 p-2"><p class="h5">' . $dados["nome_da_empresa"] . ' </p></div></div></a>
                               <p class="card-text">' . $dados["descricao"] . '</p>
                           <img src="' . $dados["imagem"] . '" alt="" class="w-100">
                             <div class="card-body">                              
@@ -144,13 +136,9 @@ if (!isset($_SESSION['nome']))
             } else {
                 echo "0 results";
             }
-
             ?>
-
-            </div>
         </div>
-
-
+    </div>
     </div>
 </body>
 

@@ -50,7 +50,7 @@
                 <input type="password" id="senha" name="senha" placeholder="Sua senha">
                 </div>
 
-                <p>Já tem uma conta? <a href="Login.php"> Conectar-se</a></p>
+                <p>Já tem uma conta? <a href=login.php"> Conectar-se</a></p>
                 <p>É uma empresa? <a href="Cadastro_empresa.php">Cadastre-se Grátis aqui!</a></p>
                 <div>
                     <input type="submit" value="Criar Conta">
@@ -92,7 +92,7 @@
 
                 if ($stmt->execute()) {
                     echo "Cadastro realizado com sucesso!";
-                    header("Location: Login.php");
+                    header("Location: login.php");
                 } else {
                     echo "Erro ao cadastrar: " . $conn->error;
                 }

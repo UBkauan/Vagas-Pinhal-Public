@@ -1,10 +1,10 @@
 <?php
-    $usuario  = "root";
-    $senha    = "";
-    $url      = "localhost";
-    $database = "loginsystem";
+    $usuario  = 'root';
+    $senha    = '';
+    $server   = 'localhost';
+    $database = 'loginsystem';
     
-    $conexao = mysqli_connect($url, $usuario, $senha, $database);
+    $conexao = new mysqli($server, $usuario, $senha, $database) or die('Erro de conexão com BD');
     
     // Verifica se a conexão foi bem sucedida
     //if (!$conexao) {
@@ -13,4 +13,3 @@
     
     // Se chegou aqui, a conexão foi bem sucedida
     //echo "Conexão bem sucedida!";
-?>

@@ -50,20 +50,14 @@
                 </div>
 
 
-                <p>Já tem uma conta? <a href="Login_empresa.php">Conectar-se</a></p>
+                <p>Já tem uma conta? <a href="login_empresa.php">Conectar-se</a></p>
                 <p>É um usuário? <a href="cadastro.php">Cadastre-se Grátis aqui!</a></p>
                 <div class="btn_criar">
                     <input type="submit" value="Criar Conta">
                 </div>
                 <?php
                 // Conexão com o banco de dados
-                include_once("conexao.php");
-                $conn = mysqli_connect($url, $usuario, $senha, $database);
-
-                // Verifica conexão
-                if ($conn->connect_error) {
-                    die("Conexão falhou: " . $conn->connect_error);
-                }
+                include_once 'conexao.php';
 
                 // Coleta dados do formulário e filtra
                 $nome_empresa = filter_input(INPUT_POST, 'nome_empresa', FILTER_SANITIZE_STRING);
@@ -81,20 +75,20 @@
                 }
                 // Insere dados na tabela 'empresas'
                 $sql = "INSERT INTO empresas (nome_empresa, cnpj, email, senha, endereco) VALUES (?,?,?,?,?);";
-                $stmt = $conn->prepare($sql);
+                $stmt = $conexao->prepare($sql);
                 $stmt->bind_param("sssss", $nome_empresa, $cnpj, $email_empresa, $senhaHash, $endereco);
 
 
                 if ($stmt->execute()) {
                     echo "Cadastro realizado com sucesso!";
-                    header("Location: Login_empresa.php");
+                    header("Location: login_empresa.php");
                     exit();
                 } else {
                     echo "Erro ao cadastrar: " . $conn->error;
                 }
 
                 $stmt->close();
-                $conn->close();
+                $conexao->close();
                 ?>
             </form>
             <footer></footer>
