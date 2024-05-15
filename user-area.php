@@ -102,6 +102,7 @@ $resultado = mysqli_query($conexao, $sql);
                     $descricao = $dados['descricao'];
                     $imagem = $dados['imagem'];
                     $data_cadastro = $dados["data_cadastro"];
+
                     echo "<div class='d-flex justify-content-center align-items-center'>
                             <div class='col-6 m-4'>
                                 <div class='card shadow-sm p-4 col-8'>
@@ -115,7 +116,7 @@ $resultado = mysqli_query($conexao, $sql);
                                                     <div class='d-flex justify-content-between align-items-center'>
                                                         <div class='btn-group'>
                                                             <form>
-                                                                <buttom><a class='btn btn-sm btn-outline-secondary'>Enviar Curriculo</a></buttom>
+                                                                <buttom><a class='btn btn-sm btn-outline-secondary'>Candidatar-se</a></buttom>
                                                                 <button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>
                                                             </form>
                                                         </div>
