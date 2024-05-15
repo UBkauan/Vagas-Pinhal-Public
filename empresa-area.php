@@ -1,10 +1,10 @@
 <?php
- if (session_status() === PHP_SESSION_NONE) session_start(); // Iniciar sessão
+if (session_status() === PHP_SESSION_NONE) session_start(); // Iniciar sessão
 
- if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['id'])) {
     header('Location: logoff.php');
     exit;
- }
+}
 
 include_once 'conexao.php';
 include_once 'upload_file.php';
@@ -26,7 +26,7 @@ if (isset($_POST['btn_enviar'])) {
 
         $sql1 = "SELECT * FROM vagas 
                  WHERE titulo = '$tituloVaga' AND descricao = '$descricaoVaga' AND nome_da_empresa = '$nome_daEmpresa'";
-        
+
         $verifica = $conexao->query($sql1);
 
         if ($conexao->query($sql) === TRUE) {
@@ -113,8 +113,7 @@ if (isset($_POST['idvaga'])) {
                     <div id="iten-imgArrow">
                         <img src="img/augusto-calheiros 1.png" alt="">
                         <div class="dropdown">
-                            <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" 
-                                  data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;">
+                            <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;">
                             </span>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="logoff.php">Desconectar</a></li>
@@ -130,7 +129,7 @@ if (isset($_POST['idvaga'])) {
                 <div class="imgFundo">
                     <img src="img/fundo_blue.svg" alt="" id="cavalo">
                 </div>
-            
+
                 <div style="width: 254px;" class="d-flex justify-content-center align-items-center">
                     <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
                 </div>
@@ -150,16 +149,21 @@ if (isset($_POST['idvaga'])) {
                         <label for="exampleFormControlInput1" class="form-label">Titulo da vaga</label>
                         <input type="text" name="titulo" class="form-control" id="exampleFormControlInput1" placeholder="Título da vaga">
                     </div>
+
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
                         <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <input type="file" name="fileToUpload" id="fileToUpload" required>
-
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
-                        </div>
-                        <span id="span_erro"></span>
+                            <div class="mb-3 flex-row p-3">
+                                <label for="formFile" class="form-label">O que deseja postar</label>
+                                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+                                    <div class="btn-group p-2" role="group">
+                                        <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
+                                    </div>
+                            </div>                        
                     </div>
+
+
+
                 </form>
             </div>
 

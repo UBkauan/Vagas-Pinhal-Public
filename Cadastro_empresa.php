@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cadastro_Empresa.css">
+    <link rel="stylesheet" href="cadastro_empresa.php.php.css">
     <title>Cadastro - Empresa</title>
 </head>
 
@@ -23,7 +23,7 @@
                 <h2>Cadastre Sua Empresa</h2>
             </div>
 
-            <form id="empresaForm" action="cadastro_empresa.php" method="post">
+            <form id="empresaForm" action="cadastro_empresa.php.php" method="post">
                 <div class="input-box">
                     <label for="nome_empresa">Nome da Empresa:</label>
                     <input type="text" id="nome_empresa" name="nome_empresa" placeholder="Nome da empresa">
