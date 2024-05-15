@@ -51,7 +51,7 @@
                 </div>
 
                 <p>Já tem uma conta? <a href=login.php"> Conectar-se</a></p>
-                <p>É uma empresa? <a href="cadastro_empresa.php.php">Cadastre-se Grátis aqui!</a></p>
+                <p>É uma empresa? <a href="cadastro_empresa.php">Cadastre-se Grátis aqui!</a></p>
                 <div>
                     <input type="submit" value="Criar Conta">
                 </div>
