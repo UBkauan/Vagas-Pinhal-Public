@@ -1,10 +1,14 @@
 <?php
-include_once "conexao.php";
+if (session_status() === PHP_SESSION_NONE) session_start(); // Iniciar sessão
+
+if (!isset($_SESSION['id'])) {
+    header('Location: logoff.php');
+    exit;
+}
+
+include_once 'conexao.php';
 $sql = "SELECT * FROM  usuario;";
 $resultado = mysqli_query($conexao, $sql);
-// Start the session
-session_start();
-if (!isset($_SESSION['nome']))
 
 ?>
 <!DOCTYPE html>
@@ -27,68 +31,49 @@ if (!isset($_SESSION['nome']))
             <a href="index.php">
                 <img src="img/VagasPinhal.svg" alt="" class="img_vagasPinhal">
             </a>
-            <div id="nav_bar1">
-                <a href="index.php">
-                    <div id="nav_home">
+                <div id="nav_bar1">
+                    <a href="index.php">
+                        <div id="nav_home">
+                            <span class="material-symbols-outlined">Home</span>
+                            <a href="index.php">HOME<hr></a>
+                        </div>
+                    </a>
 
-                        <span class="material-symbols-outlined">
-                            home
-                        </span>
+                    <a href="#">
+                        <span class="material-symbols-outlined">work</span>
+                    </a>
 
+                    <a href="#">
+                        <span class="material-symbols-outlined">chat</span>
+                    </a>
 
-                        <a href="index.php">HOME
-                            <hr>
-                        </a>
+                    <a href="#">
+                        <span class="material-symbols-outlined">notifications</span>
+                    </a>
 
-                    </div>
-                </a>
-                <a href="#">
-
-                    <span class="material-symbols-outlined">
-                        work
-                    </span>
-                </a>
-                <a href="#">
-                    <span class="material-symbols-outlined">
-                        chat
-                    </span>
-                </a>
-
-                <a href="#">
-                    <span class="material-symbols-outlined">
-                        notifications
-                    </span>
-                </a>
-                <a href="#">
-                    <span class="material-symbols-outlined">
-                        grid_view
-                    </span>
-                </a>
-            </div>
+                    <a href="#">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </a>
+                </div>
             <div id="nav_usuario">
 
                 <div class="User_name">
                     <div id="userName" style="color: white;"><?php echo $_SESSION['nome']; ?></div>
                 </div>
-                <div class="dropdown">
-
-                    <div id="iten-imgArrow">
-                        <img src="img/augusto-calheiros 1.png" alt="">
-                        <div class="dropdown">
-                            <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;">
-                            </span>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="index.php">Desconectar</a></li>
-                            </ul>
+                    <div class="dropdown">
+                        <div id="iten-imgArrow">
+                            <img src="img/augusto-calheiros 1.png" alt="">
+                            <div class="dropdown">
+                                <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;"></span>
+                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="logoff.php">Desconectar</a></li>
+                                   </ul>
+                            </div>
                         </div>
-
-                        </a>
                     </div>
-                </div>
             </div>
         </header>
 
-        <div class="">
             <div class="col-3 d-flex justify-content-center align-items-center flex-column p-5">
                 <div class="imgFundo">
                     <img src="img/fundo_blue.svg" alt="" id="cavalo">
@@ -112,32 +97,40 @@ if (!isset($_SESSION['nome']))
             $resultado = $conexao->query($sql);
             if ($resultado->num_rows > 0) {
                 while ($dados = $resultado->fetch_assoc()) {
-                    echo '
-                        <div class="d-flex justify-content-center align-items-center">
-                        <div class="col-6 m-4">
-                          <div class="card shadow-sm p-4 col-8 ">
-                          <div class="row p-2" >
-                              <div class="col-2"><img src = "' . $_SESSION["logo1"] . '" alt="" class="w-100"></div>
-                              <a href="login.php"><div class="col-6 p-2"><p class="h5">' . $dados["nome_da_empresa"] . ' </p></div></div></a>
-                              <p class="card-text">' . $dados["descricao"] . '</p>
-                          <img src="' . $dados["imagem"] . '" alt="" class="w-100">
-                            <div class="card-body">                              
-                              <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                  <buttom><a class="btn btn-sm btn-outline-secondary">Enviar Curriculo</a></buttom>
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                    $logo1 = $_SESSION['logo1'];
+                    $nomeempresa = $dados['nome_da_empresa'];
+                    $descricao = $dados['descricao'];
+                    $imagem = $dados['imagem'];
+                    $data_cadastro = $dados["data_cadastro"];
+                    echo "<div class='d-flex justify-content-center align-items-center'>
+                            <div class='col-6 m-4'>
+                                <div class='card shadow-sm p-4 col-8'>
+                                    <div class='row p-2'>
+                                        <div class='col-2'><img src='$logo1' alt='' class='w-100'></div>
+                                        <div class='col-6 p-2'><p class='h5'>$nomeempresa</p></div>                                        
+                                    </div>
+                                        <p class='card-text'>$descricao</p>
+                                            <img src='$imagem' alt='' class='w-100'>
+                                                <div class='card-body'>                              
+                                                    <div class='d-flex justify-content-between align-items-center'>
+                                                        <div class='btn-group'>
+                                                            <form>
+                                                                <buttom><a class='btn btn-sm btn-outline-secondary'>Enviar Curriculo</a></buttom>
+                                                                <button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>
+                                                            </form>
+                                                        </div>
+                                                        <small class='text-body-secondary'>$data_cadastro</small>
+                                                    </div>
+                                                </div>
                                 </div>
-                                <small class="text-body-secondary">' . $dados["data_cadastro"] . '</small>
-                              </div>
                             </div>
-                          </div>
-                        </div></div>';
+                        </div>";
                 }
             } else {
                 echo "0 results";
             }
             ?>
-        </div>
+        
     </div>
     </div>
 </body>
