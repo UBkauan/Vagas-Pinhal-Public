@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) session_start(); // Iniciar sessão
 if (!isset($_SESSION['id'])) {
     header('Location: logoff.php');
     exit;
-}
+}    
 
 include_once 'conexao.php';
 include_once 'upload_file.php';
@@ -18,6 +18,7 @@ if (isset($_POST['btn_enviar'])) {
     $empresa_id = $_SESSION['id'];
     $nome_imagem = imagem();
     $nome_daEmpresa = $_SESSION['nomeEmpresa'];
+    
 
     if (isset($nome_imagem)) {
         $sql = "INSERT INTO vagas (empresa_id, titulo, descricao, data_cadastro, imagem, nome_da_empresa) 
@@ -41,7 +42,7 @@ if (isset($_POST['btn_enviar'])) {
 
 if (isset($_POST['idvaga'])) {
     $idvaga = $_POST['idvaga'];
-    $sql = "DELETE FROM vagas WHERE id=$idvaga";
+    $sql = "DELETE FROM vagas WHERE id='$idvaga'";
     $consulta = $conexao->query($sql);
 }
 ?>
@@ -153,13 +154,13 @@ if (isset($_POST['idvaga'])) {
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">O que deseja postar?</label>
                         <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            <div class="mb-3 flex-row p-3">
-                                <label for="formFile" class="form-label">O que deseja postar</label>
-                                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
-                                    <div class="btn-group p-2" role="group">
-                                        <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
-                                    </div>
-                            </div>                        
+                        <div class="mb-3 flex-row p-3">
+                            <label for="formFile" class="form-label">O que deseja postar</label>
+                            <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" required>
+                            <div class="btn-group p-2" role="group">
+                                <button type="submit" name="btn_enviar" class="btn btn-primary">Publicar Vaga</button>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -173,7 +174,6 @@ if (isset($_POST['idvaga'])) {
 
             if ($resultado->num_rows > 0) {
                 while ($dados = $resultado->fetch_assoc()) {
-                    $logo = $_SESSION['logo1'];
                     $nomeempresa = $dados['nome_da_empresa'];
                     $descricao = $dados['descricao'];
                     $imagem = $dados['imagem'];
@@ -185,7 +185,7 @@ if (isset($_POST['idvaga'])) {
                             <div class='col-6 m-4'>
                                 <div class='card shadow-sm p-4 col-8'>
                                     <div class='row p-2'>
-                                        <div class='col-2'><img src='$logo' alt='' class='w-100'></div>
+                                        <div class='col-2'><img src='logo/logo.png' alt='' class='w-100'></div>
                                         <div class='col-6 p-2'><p class='h5'>$nomeempresa</p></div>
                                     </div>
                                     <p class='card-text'>$descricao</p>
@@ -194,8 +194,8 @@ if (isset($_POST['idvaga'])) {
                                                 <div class='d-flex justify-content-between align-items-center'>
                                                     <div class='btn-group'>
                                                         <form method='post' action='empresa-area.php'>
-                                                            <input type='hidden' name='idvaga' value='$idvaga'>
-                                                            <button class='btn btn-sm btn-outline-secondary'>Excluir</button>
+                                                            <input type='hidden' name='idvaga' >
+                                                            <button class='btn btn-sm btn-outline-secondary' value='$idvaga'>Excluir</button>
                                                         </form>    
                                                         <button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>
                                                     </div>

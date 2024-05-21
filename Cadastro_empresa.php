@@ -74,7 +74,7 @@
                     exit;
                 }
                 // Insere dados na tabela 'empresas'
-                $sql = "INSERT INTO empresas (nome_empresa, cnpj, email, senha, endereco) VALUES (?,?,?,?,?);";
+                $sql = "INSERT INTO empresas (nome_empresa, cnpj, email, senha, endereco) VALUES (?,?,?,?,?)";
                 $stmt = $conexao->prepare($sql);
                 $stmt->bind_param("sssss", $nome_empresa, $cnpj, $email_empresa, $senhaHash, $endereco);
 

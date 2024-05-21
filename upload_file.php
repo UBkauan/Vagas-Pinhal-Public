@@ -3,7 +3,6 @@
 
 function imagem()
 {
-
 $erro="";
 
 $target_dir = "img/";

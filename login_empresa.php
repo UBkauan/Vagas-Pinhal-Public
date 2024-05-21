@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
-    <title>Login - Usuário</title>
+    <title>Login - Empresa</title>
 </head>
 
 <body>
@@ -67,12 +67,12 @@
                         if (password_verify($senha, $senha_hash)) {
 
                             $_SESSION['id'] = $row['id'];
-                            $_SESSION['logo1'] = $row['logo'];
+                           
                             $_SESSION['email_empresa'] = $row['email'];
                             $_SESSION['nomeEmpresa'] = $row['nome_empresa'];
                             
                             header('Location: empresa-area.php');
-                            exit();
+                            exit;
                         } else {
                             echo 'Senha incorreta.';
                         }

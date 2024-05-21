@@ -26,6 +26,7 @@ CREATE TABLE vagas (
     descricao TEXT,
     data_cadastro DATE,
     nome_da_empresa VARCHAR(255),
+    logo_perfil VARCHAR(255),
     imagem VARCHAR(255)
 );
 
@@ -51,3 +52,4 @@ SELECT * FROM candidaturas;
 
 DROP TABLE candidaturas;
 DROP TABLE vagas;
+DROP TABLE empresas;
