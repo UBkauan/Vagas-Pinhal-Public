@@ -22,7 +22,7 @@ CREATE TABLE empresas (
 CREATE TABLE vagas (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     empresa_id INT,
-    titulo VARCHAR(100) NOT NULL,
+    titulo VARCHAR(100),
     descricao TEXT,
     data_cadastro DATE,
     nome_da_empresa VARCHAR(255),
@@ -48,6 +48,8 @@ CREATE TABLE candidaturas (
 SELECT * FROM usuario;
 SELECT * FROM empresas;
 SELECT * FROM vagas ORDER BY data_cadastro;
+INSERT INTO vagas (logo_perfil)
+VALUES ('logo.png')
 SELECT * FROM candidaturas;
 
 DROP TABLE candidaturas;
