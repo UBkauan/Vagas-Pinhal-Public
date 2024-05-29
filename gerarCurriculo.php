@@ -45,3 +45,4 @@ $dados = array(
 //Carrega o arquivo referente ao modelo de currículo selecionado
 //Quando faz isso, poderemos imprimir o conteúdo da variável $dados no currículo
 require_once("modelos/{$modelo}.php");
+require_once("user-area     .php");

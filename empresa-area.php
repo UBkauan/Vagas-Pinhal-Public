@@ -180,12 +180,13 @@ if (isset($_POST['idvaga'])) {
                     $idvaga = $dados['id'];
                     $date = date_create($dados['data_cadastro']);
                     $datacad = date_format($date, 'd/m/Y');
+                    $fotopf = $dados['logo_perfil'];
 
                     echo "<div class='row d-flex justify-content-center align-items-center'>
                             <div class='col-6 m-4'>
                                 <div class='card shadow-sm p-4 col-8'>
                                     <div class='row p-2'>
-                                        <div class='col-2'><img src='logo/logo.png' alt='' class='w-100'></div>
+                                        <div class='col-2'><img src='logo/$fotopf' alt='' class='w-100'></div>
                                         <div class='col-6 p-2'><p class='h5'>$nomeempresa</p></div>
                                     </div>
                                     <p class='card-text'>$descricao</p>

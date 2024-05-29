@@ -32,7 +32,6 @@
         </nav>
 
         <div class="header-area">
-
             <header class="header-login">
                 <div class="formulario">
 

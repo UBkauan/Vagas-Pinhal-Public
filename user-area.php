@@ -21,12 +21,12 @@ $resultado = mysqli_query($conexao, $sql);
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<style>
-    #perfilLogo{
-    width: 50px;
-    height: 50px;
-}
-</style>
+    <style>
+        #perfilLogo {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -69,19 +69,19 @@ $resultado = mysqli_query($conexao, $sql);
                 </div>
                 <div class="dropdown">
                     <div id="iten-imgArrow">
+
                         <div class="logo">
                             <?php
-
-                            $sql = "SELECT * FROM  vagas";
-                            $result = mysqli_query($conexao, $sql);
-                            $dados = $result->fetch_assoc();
-
-                            if ($_SESSION['id'] != 0) {
+                            if (!$_SESSION['id'] = 0) {
+                                $sql = "SELECT * FROM  usuario";
+                                $result = mysqli_query($conexao, $sql);
+                                $dados = $result->fetch_assoc();
                                 $fotopf = $dados['logo_perfil'];
-                                echo "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+                                $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+
+                                echo "$_foto";
                             }
                             ?>
-
                         </div>
                         <div class="dropdown">
                             <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;"></span>
@@ -117,17 +117,24 @@ $resultado = mysqli_query($conexao, $sql);
         $resultado = $conexao->query($sql);
         if ($resultado->num_rows > 0) {
             while ($dados = $resultado->fetch_assoc()) {
-                $logo1 = $_SESSION['logo1'];
                 $nomeempresa = $dados['nome_da_empresa'];
                 $descricao = $dados['descricao'];
                 $imagem = $dados['imagem'];
                 $data_cadastro = $dados["data_cadastro"];
 
+
+                if (!$_SESSION['id'] = 0) {
+                    $sql = "SELECT * FROM  usuario";
+                    $result = mysqli_query($conexao, $sql);
+                    $dados = $result->fetch_assoc();
+                    $fotopf = $dados['logo_perfil'];
+                    $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+                }
                 echo "<div class='d-flex justify-content-center align-items-center'>
                             <div class='col-6 m-4'>
                                 <div class='card shadow-sm p-4 col-8'>
                                     <div class='row p-2'>
-                                        <div class='col-2'><img src='$logo1' alt='' class='w-100'></div>
+                                        <div class='col-2'>$_foto</div>
                                         <div class='col-6 p-2'><p class='h5'>$nomeempresa</p></div>                                        
                                     </div>
                                         <p class='card-text'>$descricao</p>

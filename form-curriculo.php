@@ -5,6 +5,8 @@ if (!isset($_SESSION['id'])) {
     header('Location: logoff.php');
     exit;
 }
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+var_dump($id);
 
 include_once 'conexao.php';
 $sql = "SELECT * FROM  usuario;";
@@ -19,17 +21,26 @@ $resultado = mysqli_query($conexao, $sql);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gerador de Currículo</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Gerador de Currículo</title>
+    <style>
+        #perfilLogo {
+            width: 50px;
+            height: 50px;
+        }
+
+        #foto_edit {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Gerador de Currículos</a>
-    </nav>
+    
     <header>
         <a href="index.php">
             <img src="img/VagasPinhal.svg" alt="" class="img_vagasPinhal">
@@ -60,24 +71,55 @@ $resultado = mysqli_query($conexao, $sql);
                 <span class="material-symbols-outlined">grid_view</span>
             </a>
         </div>
-        <div id="nav_usuario">
+        <div id="nav_usuario" class="d-flex h-7">
 
             <div class="User_name">
                 <div id="userName" style="color: white;"><?php echo $_SESSION['nome']; ?></div>
             </div>
             <div class="dropdown">
                 <div id="iten-imgArrow">
-                    <a href="form-curriculo.php"> <img src="<?= $dados['foto']; ?>" alt="Foto"></a>
-                    <div class="dropdown">
-                        <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;"></span>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="logoff.php">Desconectar</a></li>
-                        </ul>
+                    <div class="area_perfil">
+                    <div class="logo">
+                            <?php
+                            if (!$_SESSION['id'] = 0) {
+                                $sql = "SELECT * FROM  usuario";
+                                $result = mysqli_query($conexao, $sql);
+                                $dados = $result->fetch_assoc();
+                                $fotopf = $dados['logo_perfil'];
+                                $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+
+                                echo "$_foto";
+                            }
+                            ?>
+                        </div>  
+                        <div class="dropdown">
+                            <span class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none;"></span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="logoff.php">Desconectar</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
+
+    <div class="area_perfil">
+        <div class="logo d-flex flex-column align-items-center g-5">
+            <?php
+            if (!$_SESSION['id'] = 0) {
+                $sql = "SELECT * FROM  usuario";
+                $result = mysqli_query($conexao, $sql);
+                $dados = $result->fetch_assoc();
+                $fotopf = $dados['logo_perfil'];
+                $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+
+                echo "$_foto";
+                echo $_SESSION['nome'];
+            }  
+            ?>
+            
+        </div>
+    </div>
     <main class="container" style="margin-top:20px">
         <form action="gerarCurriculo.php" method="post" target="_blank" enctype="multipart/form-data">
             <div class="card">

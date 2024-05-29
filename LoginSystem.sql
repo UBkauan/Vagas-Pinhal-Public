@@ -7,6 +7,7 @@ CREATE TABLE usuario (
     senha VARCHAR(255) NOT NULL,
     email VARCHAR(255),
     nome VARCHAR(255),
+    logo_perfil VARCHAR(255),
     sobrenome VARCHAR(255)
 );	
 
@@ -48,8 +49,8 @@ CREATE TABLE candidaturas (
 SELECT * FROM usuario;
 SELECT * FROM empresas;
 SELECT * FROM vagas ORDER BY data_cadastro;
-INSERT INTO vagas (logo_perfil)
-VALUES ('logo.png')
+INSERT INTO usuario (logo_perfil)
+VALUES ('logo.png');
 SELECT * FROM candidaturas;
 
 DROP TABLE candidaturas;
