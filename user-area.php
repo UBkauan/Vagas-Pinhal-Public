@@ -99,11 +99,25 @@ $resultado = mysqli_query($conexao, $sql);
                 <img src="img/fundo_blue.svg" alt="" id="cavalo">
             </div>
             <div style="width: 254px;" class="d-flex justify-content-center align-items-center">
-                <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
+                <div class="col-12">
+                    <div>
+                        <?php
+                        if (!$_SESSION['id'] = 0) {
+                            $sql = "SELECT * FROM  usuario";
+                            $result = mysqli_query($conexao, $sql);
+                            $dados = $result->fetch_assoc();
+                            $fotopf = $dados['logo_perfil'];
+                            $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+
+                            echo "$_foto";
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
 
             <div class="info-user d-flex justify-content-center align-items-center">
-                <div class="row col-12">
+                <div class="row">
                     <p id="name-user" class="col-12 text-center"><?php echo $_SESSION['nome']; ?></p>
                     <hr style="width: 220px;">
                 </div>
@@ -128,7 +142,7 @@ $resultado = mysqli_query($conexao, $sql);
                     $result = mysqli_query($conexao, $sql);
                     $dados = $result->fetch_assoc();
                     $fotopf = $dados['logo_perfil'];
-                    $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+                    $_foto = "<img src='logo/$fotopf' id='perfilLogo'>";
                 }
                 echo "<div class='d-flex justify-content-center align-items-center'>
                             <div class='col-6 m-4'>
