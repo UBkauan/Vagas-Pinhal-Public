@@ -1,7 +1,7 @@
 <?php
- if (session_status() === PHP_SESSION_NONE) session_start();
- // Conexão com o banco de dados
- include_once 'conexao.php';
+if (session_status() === PHP_SESSION_NONE) session_start();
+// Conexão com o banco de dados
+include_once 'conexao.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +19,12 @@
     <div class="menu_home">
         <nav>
             <div class="logo">
+                <a href="index.php">
+                    <img src="img/VagasPinhal.svg" alt="">
+                </a>
 
-                <img src="img/VagasPinhal.svg" alt="">
 
             </div>
-
-            <div class="div-botao">
-                <a href="index.php">Home</a>
-            </div>
-
-
         </nav>
     </div>
     <div class="container">
@@ -87,7 +83,7 @@
                             $_SESSION['logo1'] = $row['logo'];
                             $_SESSION['email'] = $row['email'];
                             $_SESSION['nome'] = $row['nome'];
-                            
+
                             header("Location: user-area.php");
                             exit();
                         } else {
@@ -102,10 +98,10 @@
                 }
                 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 //     // Conectar ao banco de dados e verificar as credenciais
-                    
+
                 //     $email = $_POST['email'];
                 //     $password = $_POST['senha'];
-                    
+
 
                 //     $sql = "SELECT * FROM usuario WHERE email='$email'";
                 //     $res = $conexao->query($sql);
@@ -127,13 +123,13 @@
                 // }
 
                 ?>
-               
+
             </form>
-            
+
         </div>
     </div>
-    
-    
+
+
 </body>
 
 </html>

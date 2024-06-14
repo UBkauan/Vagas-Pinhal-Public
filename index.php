@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <link rel="shortcut icon" tpe="" href="img/VagasPinhal.svg" style="width: 800px;">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Vagas Pinhal</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="containers">
 
         <nav>
             <div class="menu-bar">
@@ -135,8 +136,8 @@
                         <article class="tips__article">
                             <a href="entrevista-emprego.html"><img class="tips__image" src="img/HomemComprimentando.png" height="363" width="281"></a>
                             <div class="tips__content">
-                                <h3 class="tips__text">25 perguntas da entrevista de emprego e suas melhores
-                                    respostas</h3>
+                                <h5 class="tips__text">25 perguntas da entrevista de emprego e suas melhores
+                                    respostas</h5>
                             </div>
                         </article>
                     </li>
@@ -146,7 +147,7 @@
                             <article class="tips__article">
                                 <a href="habilidades-e-competencias.html"><img class="tips__image" src="img/HomemSorrindo.png"></a>
                                 <div class="tips__content">
-                                    <h3 class="tips__text">15 habilidades e competências que valorizam o currículo</h3>
+                                    <h5 class="tips__text">15 habilidades e competências que valorizam o currículo</h5>
                                 </div>
                             </article>
                         </a>
@@ -157,8 +158,8 @@
                             <article class="tips__article">
                                 <a href="resumo-profissional-qualificacoes-e-diferenciais.html"><img class="tips__image" src="img/Digitando.png"></a>
                                 <div class="tips__content">
-                                    <h3 class="tips__text">Resumo profissional: dicas e modelos para destacar seus
-                                        diferenciais</h3>
+                                    <h5 class="tips__text">Resumo profissional: dicas e modelos para destacar seus
+                                        diferenciais</h5>
                                 </div>
                             </article>
                         </a>
@@ -167,43 +168,23 @@
                 </ul>
             </header>
         </section>
-        <footer>
-            <div class="footer-box">
-                <div>
-                    <div>
-                        <h3>A VAGAS PINHAL</h3>
-                        <hr width="79">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur <br>
-                        adipiscing elit, sed do eiusmod tempor <br>
-                        incididunt.Lorem ipsum dolor sit amet,<br>
-                        consectetur adipiscing elit, sed do <br>
-                        eiusmod tempor incididunt.Lorem ipsum <br>
-                        dolor sit amet...
-                    </p>
-                </div>
-            </div>
 
-            <div class="footer-box">
-                <div>
-                    <div>
-                        <h3>FIQUE POR DENTRO </h3>
-                        <hr width="79">
-                    </div>
-
-                    <div>
-                        <p>E-mail: contato@vagaspinhal.com</p>
-                        <p>Telefone : +55 (19) 994343-4321</p>
-                        <p>CNPJ: 123213213123123122</p>
-                    </div>
-
-
-                </div>
-
-            </div>
-        </footer>
+        <div class="container">
+            <footer>
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                    
+                </ul>
+                
+            </footer>
+            <div><p class="text-center text-body-secondary">© 2024 VagasPinhal, Inc</p></div>
+        </div>
     </div>
-
 
     <script src="script.js"></script>
 </body>

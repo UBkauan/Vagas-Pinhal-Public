@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) session_start(); // Iniciar sessão
 if (!isset($_SESSION['id'])) {
     header('Location: logoff.php');
     exit;
-}    
+}
 
 include_once 'conexao.php';
 include_once 'upload_file.php';
@@ -18,7 +18,7 @@ if (isset($_POST['btn_enviar'])) {
     $empresa_id = $_SESSION['id'];
     $nome_imagem = imagem();
     $nome_daEmpresa = $_SESSION['nomeEmpresa'];
-    
+
 
     if (isset($nome_imagem)) {
         $sql = "INSERT INTO vagas (empresa_id, titulo, descricao, data_cadastro, imagem, nome_da_empresa) 
@@ -130,9 +130,20 @@ if (isset($_POST['idvaga'])) {
                 <div class="imgFundo">
                     <img src="img/fundo_blue.svg" alt="" id="cavalo">
                 </div>
+                <div  class="d-flex justify-content-center align-items-center">
+                    <div>
+                        <?php
+                        if (!$_SESSION['id'] = 0) {
+                            $sql = "SELECT * FROM  usuario";
+                            $result = mysqli_query($conexao, $sql);
+                            $dados = $result->fetch_assoc();
+                            $fotopf = $dados['logo_perfil'];
+                            $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo' style='width: 75px;'></a>";
 
-                <div style="width: 254px;" class="d-flex justify-content-center align-items-center">
-                    <div class="col-12"><img src="img/augusto-calheiros 1.png" alt="" id="user-img"></div>
+                            echo "$_foto";
+                        }
+                        ?>
+                    </div>
                 </div>
 
                 <div class="info-user d-flex justify-content-center align-items-center">

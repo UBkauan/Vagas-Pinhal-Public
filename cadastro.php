@@ -11,14 +11,10 @@
 <body>
     <nav>
         <div class="logo">
-
-            <img src="img/VagasPinhal.svg" alt="">
-
+            <a href="index.php">
+                <img src="img/VagasPinhal.svg" alt="">
+            </a>
         </div>
-
-        <div class="div-botao">
-
-            <button id="entrar"><a href="index.php">Home</a></button>
     </nav>
     </div>
     <div class="container">
@@ -31,26 +27,26 @@
 
             <form id="userForm" action="cadastro.php" method="post">
                 <div class="input-box">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome">
                 </div>
 
                 <div class="input-box">
-                <label for="sobrenome">Sobrenome:</label>
-                <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
+                    <label for="sobrenome">Sobrenome:</label>
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
                 </div>
 
                 <div class="input-box">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Seu Email">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Seu Email">
                 </div>
 
                 <div class="input-box">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="Sua senha">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Sua senha">
                 </div>
 
-                <p>Já tem uma conta? <a href=login.php"> Conectar-se</a></p>
+                <p>Já tem uma conta? <a href="login.php"> Conectar-se</a></p>
                 <p>É uma empresa? <a href="cadastro_empresa.php">Cadastre-se Grátis aqui!</a></p>
                 <div>
                     <input type="submit" value="Criar Conta">
@@ -74,7 +70,7 @@
                 $sobrenome = filter_input(INPUT_POST, 'sobrenome', FILTER_SANITIZE_STRING);
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
                 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
-                
+
 
                 // Validação básica dos campos obrigatórios
                 if (empty($name) || empty($sobrenome) || empty($email) || empty($senha)) {

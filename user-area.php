@@ -46,7 +46,7 @@ $resultado = mysqli_query($conexao, $sql);
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="index.php">
                     <span class="material-symbols-outlined">work</span>
                 </a>
 
@@ -94,12 +94,11 @@ $resultado = mysqli_query($conexao, $sql);
             </div>
         </header>
 
-        <div class="col-3 d-flex justify-content-center align-items-center flex-column p-5">
+        <div class="col-3 d-flex justify-content-center align-items-center flex-column p-5" >
             <div class="imgFundo">
                 <img src="img/fundo_blue.svg" alt="" id="cavalo">
             </div>
-            <div style="width: 254px;" class="d-flex justify-content-center align-items-center">
-                <div class="col-12">
+            <div class="d-flex justify-content-center align-items-center">
                     <div>
                         <?php
                         if (!$_SESSION['id'] = 0) {
@@ -107,14 +106,13 @@ $resultado = mysqli_query($conexao, $sql);
                             $result = mysqli_query($conexao, $sql);
                             $dados = $result->fetch_assoc();
                             $fotopf = $dados['logo_perfil'];
-                            $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo'></a>";
+                            $_foto = "<a href='form-curriculo.php'><img src='logo/$fotopf' id='perfilLogo' style='height: 75px; width:75px;'></a>";
 
                             echo "$_foto";
                         }
                         ?>
                     </div>
                 </div>
-            </div>
 
             <div class="info-user d-flex justify-content-center align-items-center">
                 <div class="row">
@@ -157,8 +155,7 @@ $resultado = mysqli_query($conexao, $sql);
                                                     <div class='d-flex justify-content-between align-items-center'>
                                                         <div class='btn-group'>
                                                             <form>
-                                                                <buttom><a class='btn btn-sm btn-outline-secondary'>Candidatar-se</a></buttom>
-                                                                <button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>
+                                                                <buttom><a class='btn btn-sm btn-outline-secondary'>Candidatar-se</a></buttom>                                                                
                                                             </form>
                                                         </div>
                                                         <small class='text-body-secondary'>$data_cadastro</small>

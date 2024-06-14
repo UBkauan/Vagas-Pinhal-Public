@@ -55,4 +55,5 @@ SELECT * FROM candidaturas;
 
 DROP TABLE candidaturas;
 DROP TABLE vagas;
+DROP TABLE usuario;
 DROP TABLE empresas;
